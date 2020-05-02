@@ -6,7 +6,7 @@ import java.util.Iterator;
 public class StackList <T> implements Iterable<T>{
     private String name;
     private Node top;
-
+    private int size = 0;
     /**
      * Default constructor for StackList
      * Sets name to empty and top to null
@@ -15,17 +15,21 @@ public class StackList <T> implements Iterable<T>{
     {
         name = "Empty";
         top = null;
+
     }
 
     /**
      * takes a generic item as the argument and adds the item to the top of the stack.
      *
      * @param x the generic item added to the top of the stack
-     * @return Returns true if generic object is added successfully
+     *
      **/
-    public boolean push(T x)
+    public void push(T x)
     {
-        return true;
+        Node<T> newNode = new Node<T>(x,null);
+        newNode.next = top;
+        top = newNode;
+        size++;
     }
 
     /**
@@ -34,11 +38,18 @@ public class StackList <T> implements Iterable<T>{
      * @return The generic item from the top of the list
      */
 
-
-
     public T pop()
     {
-        return T;
+        Node<T> temp;
+        temp = top;
+        if (top !=null)
+        {
+            top=top.next;
+            temp.next = null;
+        }
+        size--;
+
+        return temp.data;
     }
 
     /**
@@ -49,7 +60,9 @@ public class StackList <T> implements Iterable<T>{
      */
     public T peek()
     {
-        return T;
+        if (this.isEmpty())
+            return null;
+        return (T) top.data;
     }
 
     /**
@@ -58,7 +71,8 @@ public class StackList <T> implements Iterable<T>{
      */
     public void clear()
     {
-
+        top = null;
+        size = 0;
     }
 
     public String toString(){
@@ -72,10 +86,7 @@ public class StackList <T> implements Iterable<T>{
      */
     public boolean isEmpty()
     {
-        if (top.next == null)
-            return true;
-        else
-            return false;
+       return top == null;
     }
 
 
@@ -85,15 +96,8 @@ public class StackList <T> implements Iterable<T>{
      */
     public int size()
     {
-        int size = 0;
         return size;
     }
-
-
-
-
-
-
 
     private class Node <T>
     {
@@ -105,7 +109,6 @@ public class StackList <T> implements Iterable<T>{
             data = obj;
             next = nxt;
         }
-
 
     }
 

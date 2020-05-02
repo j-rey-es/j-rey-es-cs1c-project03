@@ -100,6 +100,13 @@ public class StackList <T> implements Iterable<T>{
         T data;
         Node next;
 
+        Node (T obj, Node nxt)
+        {
+            data = obj;
+            next = nxt;
+        }
+
+
     }
 
     public Iterator<T> iterator()

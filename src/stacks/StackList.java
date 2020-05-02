@@ -1,8 +1,9 @@
 package stacks;
 
+
 import java.util.Iterator;
 
-public class StackList <T>{
+public class StackList <T> implements Iterable<T>{
     private String name;
     private Node top;
 
@@ -101,6 +102,10 @@ public class StackList <T>{
 
     }
 
+    public Iterator<T> iterator()
+    {
+        return new StackIterator();
+    }
 
     private class StackIterator implements Iterator<T> {
 
@@ -111,6 +116,11 @@ public class StackList <T>{
 
         public T next() {
             return null;
+        }
+
+        public void remove()
+        {
+
         }
     }
 }

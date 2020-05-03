@@ -24,7 +24,6 @@ public class Navigator {
     }
 
     /** Accessor for BackLinks
-     *
      * @return StackList<String> of backLinks
      **/
     public StackList<String> getBackLinks() {
@@ -32,7 +31,6 @@ public class Navigator {
     }
 
     /** Accessor for ForwardLinks
-     *
      * @return StackList<String> of ForwardLinks
      **/
     public StackList<String> getForwardLinks() {
@@ -41,7 +39,7 @@ public class Navigator {
 
     /**
      * Sets the current link of Navigator browser depending on current state of Navigator
-     * @param
+     * @param cLink String of current link
      */
     public void setCurrentLink (String cLink)
     {
@@ -59,11 +57,18 @@ public class Navigator {
 
     }
 
+    /**
+     * Pushes the current link into the forwardLinks and retrieves a link from the backLinks
+     */
     public void goBack()
     {
         forwardLinks.push(currentLink);
         currentLink = backLinks.pop();
     }
+
+    /**
+     * Pushes the current link into the backLinks and retrieves a link from the forwardLinks
+     */
     public void goForward()
     {
         backLinks.push(currentLink);

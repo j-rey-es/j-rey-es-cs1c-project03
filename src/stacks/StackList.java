@@ -1,7 +1,10 @@
 package stacks;
-
-import java.util.Stack;
 import java.util.Iterator;
+
+/**
+ * StackList class is a generic Stack ADT
+ * @author Joel R
+ */
 
 public class StackList <T> implements Iterable<T>{
     private String name;
@@ -20,9 +23,7 @@ public class StackList <T> implements Iterable<T>{
 
     /**
      * takes a generic item as the argument and adds the item to the top of the stack.
-     *
      * @param x the generic item added to the top of the stack
-     *
      **/
     public void push(T x)
     {
@@ -33,8 +34,7 @@ public class StackList <T> implements Iterable<T>{
     }
 
     /**
-     * Removes the item from the top of the stack. This method should return the generic item popped
-     *
+     * Removes the item from the top of the stack
      * @return The generic item from the top of the list
      */
 
@@ -54,9 +54,7 @@ public class StackList <T> implements Iterable<T>{
     }
 
     /**
-     * Looks at the top of the stack and returns a generic type for the data seen at the top of the stack.
-     * The item should not be removed from the top of the stack.
-     * NOTE: If the stack is empty, returns null.
+     * Looks at the top of the stack and returns the item without removing it
      * @return The generic for data at the top of the stack
      */
     public T peek()
@@ -67,8 +65,7 @@ public class StackList <T> implements Iterable<T>{
     }
 
     /**
-     * Discards all object references from the linked-list to "empty" this StackList instance.
-     *
+     * Removes all references and sets StackList to empty state
      */
     public void clear()
     {
@@ -76,16 +73,20 @@ public class StackList <T> implements Iterable<T>{
         size = 0;
     }
 
+    /**
+     * Returns the StackList as a formatted string containing the name of the stack and the items
+     * @return header + showAll A string containing the names and the contents of the StackList
+     */
     public String toString(){
-        String showAll = "";
+        String showAll = "[";
         String header;
         header = name + " with " + this.size() + " links " + "\n" ;
         Node i;
         for(i = top; i!=null; i = i.next)
         {
-            showAll += i.toString() +" ";
+            showAll += i.toString() +", ";
         }
-        return header + showAll;
+        return header + showAll + "]";
     }
 
 
@@ -108,28 +109,48 @@ public class StackList <T> implements Iterable<T>{
         return size;
     }
 
+    /**
+     * Node inner class of the StackListt that holds the generic data contains pointers to Next object in Node
+     * @author Joel R
+     */
     private class Node <T>
     {
         T data;
         Node next;
-
+        /**
+         * Constructor for Node objects
+         * @params obj Generic object defined
+         * @params nxt Node object to have obj
+         */
         Node (T obj, Node nxt)
         {
             data = obj;
             next = nxt;
         }
 
+        /**
+         * Accessor for data
+         * @return  The data stored in the Node
+         */
         public T getData()
         {
             return data;
         }
+
+        /**
+         * Stringizer for the data object
+         * @return  The data stored in the Node as a String
+         */
         public String toString()
         {
             return data.toString();
         }
 
     }
-
+    /**
+     * Iterator inner class of the StackListt that contains a second StackList<T> that allows the client to use Iterator object to navigate StackList
+     * @author Joel R
+     */
     public Iterator<T> iterator()
     {
         return new StackIterator();
@@ -138,12 +159,20 @@ public class StackList <T> implements Iterable<T>{
     private class StackIterator implements Iterator<T> {
         StackList<T> iteratorStack = new StackList<T>("Iterator Stack"); //separate stackList to hold data
 
+        /**
+         * Interface for Iterator for hasNext()
+         * @return boolean, true if there is a next node in StackList
+         */
         public boolean hasNext() {
             if (StackList.this.isEmpty())
                 return false;
             return top.next !=null;
         }
 
+        /**
+         * Interface for Iterator for next()
+         * @return generic data for data stored in Next node
+         */
         public T next() {
             T tempData;
             tempData = StackList.this.pop();
@@ -154,7 +183,6 @@ public class StackList <T> implements Iterable<T>{
         /**
          * Method is not used in this project
          */
-
         public void remove()
         {
 

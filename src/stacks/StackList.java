@@ -40,6 +40,8 @@ public class StackList <T> implements Iterable<T>{
 
     public T pop()
     {
+        if (this.isEmpty())
+            return null;
         Node<T> temp;
         temp = top;
         if (top !=null)
@@ -48,7 +50,6 @@ public class StackList <T> implements Iterable<T>{
             temp.next = null;
         }
         size--;
-
         return temp.data;
     }
 
@@ -138,9 +139,10 @@ public class StackList <T> implements Iterable<T>{
         StackList<T> iteratorStack = new StackList<T>("Iterator Stack"); //separate stackList to hold data
 
         public boolean hasNext() {
-            return top.next != null;
+            if (StackList.this.isEmpty())
+                return false;
+            return top.next !=null;
         }
-
 
         public T next() {
             T tempData;

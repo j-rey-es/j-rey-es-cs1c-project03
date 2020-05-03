@@ -1,5 +1,10 @@
 package stacks;
 
+/**
+ * Navigator class simulates an internet browser with back and forward
+ * @author Joel R
+ */
+
 public class Navigator {
     private String currentLink;
     private StackList<String> backLinks;
@@ -24,14 +29,14 @@ public class Navigator {
     }
 
     /** Accessor for BackLinks
-     * @return StackList<String> of backLinks
+     * @return StackList of backLinks
      **/
     public StackList<String> getBackLinks() {
         return backLinks;
     }
 
     /** Accessor for ForwardLinks
-     * @return StackList<String> of ForwardLinks
+     * @return StackList of ForwardLinks
      **/
     public StackList<String> getForwardLinks() {
         return forwardLinks;

@@ -108,13 +108,13 @@ public class BrowserNavigation
 	 */
 	public static void main(String[] args) 
 	{
-		final String FILENAME = "resources/links.txt";
+		//final String FILENAME = "resources/links.txt";
 
 		// NOTE: An example of testing the boundary condition when back links stack is empty
 		//final String FILENAME = "resources/popEmptyStackOfLinks.txt";
 
 		// Additional test input
-		//final String FILENAME = "resources/links_JReyes";
+		final String FILENAME = "resources/links_JReyes.txt";
 
 		BrowserNavigation bn = new BrowserNavigation();
 		Navigator navigator = bn.getNavigationFeature();

@@ -13,6 +13,7 @@ public class StackList <T> implements Iterable<T>{
     /**
      * Default constructor for StackList
      * Sets name to empty and top to null
+     * @param stackName Name of the StackList
      */
     public StackList(String stackName)
     {
@@ -119,8 +120,8 @@ public class StackList <T> implements Iterable<T>{
         Node next;
         /**
          * Constructor for Node objects
-         * @params obj Generic object defined
-         * @params nxt Node object to have obj
+         * @param obj Generic object defined
+         * @param nxt Node object to have obj
          */
         Node (T obj, Node nxt)
         {
@@ -148,7 +149,7 @@ public class StackList <T> implements Iterable<T>{
 
     }
     /**
-     * Iterator inner class of the StackListt that contains a second StackList<T> that allows the client to use Iterator object to navigate StackList
+     * Iterator inner class of the StackList that contains a second StackList that allows the client to use Iterator object to navigate StackList
      * @author Joel R
      */
     public Iterator<T> iterator()

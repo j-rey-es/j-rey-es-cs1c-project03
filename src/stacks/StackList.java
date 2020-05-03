@@ -76,7 +76,13 @@ public class StackList <T> implements Iterable<T>{
     }
 
     public String toString(){
-        return String;
+        String showAll = "";
+        Node i;
+        for(i = top; i!=null; i = i.next)
+        {
+            showAll += i.toString() +" ";
+        }
+        return showAll;
     }
 
 

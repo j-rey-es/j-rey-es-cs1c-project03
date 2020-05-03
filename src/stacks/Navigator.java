@@ -5,25 +5,44 @@ public class Navigator {
     private StackList<String> backLinks;
     private StackList<String> forwardLinks;
 
-    public Navigator (String clink, StackList<String> bLinks, StackList<String> fLinks)
-    {
-        currentLink = clink;
-        backLinks = bLinks;
-        forwardLinks = fLinks;
-    }
+    /**
+     * Default Constructor for Navigator
+     */
 
+    public Navigator ()
+    {
+        currentLink = new String(" ");
+        backLinks = new StackList<String>();
+        forwardLinks = new StackList<String>();
+    }
+    /**
+     * Accessor method for Current Link
+     * @return String of current Link in Navigator
+     */
     public String getCurrentLink() {
         return currentLink;
     }
 
+    /** Accessor for BackLinks
+     *
+     * @return StackList<String> of backLinks
+     **/
     public StackList<String> getBackLinks() {
         return backLinks;
     }
 
+    /** Accessor for ForwardLinks
+     *
+     * @return StackList<String> of ForwardLinks
+     **/
     public StackList<String> getForwardLinks() {
         return forwardLinks;
     }
 
+    /**
+     * Sets the current link of Navigator browser depending on current state of Navigator
+     * @param
+     */
     public void setCurrentLink (String cLink)
     {
         if (forwardLinks.isEmpty())

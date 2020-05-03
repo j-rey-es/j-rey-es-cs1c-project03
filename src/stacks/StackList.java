@@ -110,6 +110,11 @@ public class StackList <T> implements Iterable<T>{
             next = nxt;
         }
 
+        public T getData()
+        {
+            return data;
+        }
+
     }
 
     public Iterator<T> iterator()
@@ -118,14 +123,18 @@ public class StackList <T> implements Iterable<T>{
     }
 
     private class StackIterator implements Iterator<T> {
+        StackList<T> iteratorStack = new StackList<T>(); //separate stackList to hold data
 
         public boolean hasNext() {
-            return false;
+            return top.next != null;
         }
 
 
         public T next() {
-            return null;
+            T tempData;
+            tempData = StackList.this.pop();
+            iteratorStack.push(tempData);
+            return tempData;
         }
 
         public void remove()

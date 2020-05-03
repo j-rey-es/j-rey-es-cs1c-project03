@@ -14,7 +14,6 @@ public class BrowserNavigation
 {
 	public static final boolean SHOW_DETAILS = true;
 
-	// TODO: Define your own singly linked list StackList class.
 	// Two stacks: one for "Back" button links; another for "Forward" button links
 	private StackList<String> backLinks;
 	private StackList<String> forwardLinks;
@@ -22,10 +21,6 @@ public class BrowserNavigation
 	// the current webpage the user is viewing
 	private String currentLink;
 
-	// TODO: Define the class Navigator that provides three navigation options where the user can:
-	//       1. Set the current link via setCurrentLink(linkName) method.
-	//       2. Replace the current link by going back one link via goBack() method.
-	//       3. Replace the current link by going forward one link via goForward() method.
 	private Navigator navigationFeature;
 
 	/**
@@ -33,17 +28,12 @@ public class BrowserNavigation
 	 */
 	public BrowserNavigation()
 	{
-		// TODO: Define the constructor of Navigator class so that it sets the currentLink to the empty String and
-		//       initializes two objects of type StackList(name) called backLinks and forwardLinks.
 		navigationFeature = new Navigator();
 
-		// TODO: Define the accessor method for the String representation of the currentLink.
 		this.currentLink = navigationFeature.getCurrentLink();
 
-		// TODO: Define the accessor method for the entire backLinks stack
 		this.backLinks = navigationFeature.getBackLinks();
 
-		// TODO: Define the accessor method for the entire forwardLinks stack
 		this.forwardLinks = navigationFeature.getForwardLinks();
 	}
 
@@ -67,20 +57,18 @@ public class BrowserNavigation
 		if (currentLink.contains(linkName))
 			return true;
 
-		// TODO: Prior to calling search() method backLinks object should store a Stack of links.
 		Iterator<String> iterator = backLinks.iterator();	
 
 		// Iterates over the backLinks to see if link has been seens
 		while (iterator.hasNext())
 		{
-			// TODO: Make sure you do not add null objects to the StackList.
-			//       Otherwise, the below statement will result in NullPointerException.
+
 			String walker = iterator.next();
 			if (walker.contains(linkName))
 				return true;
 		}
 
-		// TODO: Prior to calling search() method forwardLinks object should store a Stack of links.
+
 		iterator = forwardLinks.iterator();
 
 		// Iterates over the forwardLinks to see if link has been seen.
@@ -103,8 +91,6 @@ public class BrowserNavigation
 	{
 		System.out.println("\n\n" + message);
 
-		// TODO: Define the accessor method to get a reference to the 
-		//       immutable currentLink String object
 		this.currentLink = navigationFeature.getCurrentLink();
 		System.out.println("Current Link: " + currentLink);
 
@@ -122,15 +108,13 @@ public class BrowserNavigation
 	 */
 	public static void main(String[] args) 
 	{
-		// TODO: Test all features of the Navigator class
-		//       This includes testing for boundary conditions.
 		final String FILENAME = "resources/links.txt";
 
 		// NOTE: An example of testing the boundary condition when back links stack is empty
 		//final String FILENAME = "resources/popEmptyStackOfLinks.txt";
 
-		// TODO: Provide test input files in addition to those provide.
-		// final String FILENAME = ??
+		// Additional test input
+		//final String FILENAME = "resources/links_JReyes";
 
 		BrowserNavigation bn = new BrowserNavigation();
 		Navigator navigator = bn.getNavigationFeature();
@@ -153,11 +137,6 @@ public class BrowserNavigation
 				if (line.contains("link"))
 				{
 					String linkName = tokens[1];
-
-					/* TODO: Sets currentLink to the supplied link address. Places the 
-				             old currentLink on the backLinks stack. Then, clears the 
-				             forwardLinks stack.sets current link, 
-					 */
 					navigator.setCurrentLink(linkName);
 
 					if (SHOW_DETAILS)
@@ -212,7 +191,6 @@ public class BrowserNavigation
 		}
 
 		bn.printLinks("\nAt the end of test file " + FILENAME);
-
 
 		// flush the error stream
 		System.err.flush();

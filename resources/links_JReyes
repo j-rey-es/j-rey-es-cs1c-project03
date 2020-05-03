@@ -1,0 +1,18 @@
+link www.google.com
+link theverge.com
+link nytimes.com
+link apple.com
+contains bing.com
+back
+back
+link amazon.com
+link youtube.com
+contains yahoo.com
+contains theverge.com
+contains apple.com
+back
+back
+link twitter.com
+link messenger.com
+contains youtube.com
+contains google.com

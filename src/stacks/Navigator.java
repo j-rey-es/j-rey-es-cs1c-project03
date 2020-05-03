@@ -12,8 +12,8 @@ public class Navigator {
     public Navigator ()
     {
         currentLink = new String(" ");
-        backLinks = new StackList<String>();
-        forwardLinks = new StackList<String>();
+        backLinks = new StackList<String>("Back");
+        forwardLinks = new StackList<String>("Forward");
     }
     /**
      * Accessor method for Current Link

@@ -1,6 +1,6 @@
 package stacks;
 
-
+import java.util.Stack;
 import java.util.Iterator;
 
 public class StackList <T> implements Iterable<T>{
@@ -11,9 +11,9 @@ public class StackList <T> implements Iterable<T>{
      * Default constructor for StackList
      * Sets name to empty and top to null
      */
-    public StackList()
+    public StackList(String stackName)
     {
-        name = "Empty";
+        name = stackName;
         top = null;
 
     }
@@ -77,12 +77,14 @@ public class StackList <T> implements Iterable<T>{
 
     public String toString(){
         String showAll = "";
+        String header;
+        header = name + " with " + this.size() + " links " + "\n" ;
         Node i;
         for(i = top; i!=null; i = i.next)
         {
             showAll += i.toString() +" ";
         }
-        return showAll;
+        return header + showAll;
     }
 
 
@@ -120,6 +122,10 @@ public class StackList <T> implements Iterable<T>{
         {
             return data;
         }
+        public String toString()
+        {
+            return data.toString();
+        }
 
     }
 
@@ -129,7 +135,7 @@ public class StackList <T> implements Iterable<T>{
     }
 
     private class StackIterator implements Iterator<T> {
-        StackList<T> iteratorStack = new StackList<T>(); //separate stackList to hold data
+        StackList<T> iteratorStack = new StackList<T>("Iterator Stack"); //separate stackList to hold data
 
         public boolean hasNext() {
             return top.next != null;
@@ -142,6 +148,10 @@ public class StackList <T> implements Iterable<T>{
             iteratorStack.push(tempData);
             return tempData;
         }
+
+        /**
+         * Method is not used in this project
+         */
 
         public void remove()
         {
